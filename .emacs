@@ -97,7 +97,6 @@
  '(ecb-options-version "2.32")
  '(ecb-primary-secondary-mouse-buttons (quote mouse-1--mouse-2))
  '(ecb-source-file-regexps (quote ((".*" ("\\(^\\(\\.\\|#\\)\\|\\(~$\\|\\.\\(elc\\|pyc\\|obj\\|o\\|class\\|lib\\|dll\\|a\\|so\\|cache\\)$\\)\\)") ("^\\.\\(emacs\\|gnus\\)$")))))
- '(ecb-source-path (quote (("/home/danieleb/repo" "Repos") ("/home/danieleb/projects" "Proj") (#("/home/danieleb/repo/ironmaiden" 0 30 (help-echo "Mouse-2 toggles maximizing, mouse-3 displays a popup-menu")) "Iron Maiden"))))
  '(ecb-toggle-layout-sequence (quote ("left2" "left9")))
  '(ecb-tree-indent 2)
  '(ecb-windows-width 0.22)
