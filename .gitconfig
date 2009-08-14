@@ -1,0 +1,29 @@
+[user]
+	name = danieleb
+	email = danieleb@opera.com
+[color]
+	ui = auto
+[pack]
+	threads = 0
+[alias]
+	st = status
+	ci = commit
+	br = branch
+	brn = checkout -b
+	co = checkout
+	df = diff
+	sq = merge --squash
+
+	svm = merge --no-ff --no-commit
+    svr = svn rebase
+
+    iad = add --interactive
+	ici = commit --interactive
+    aci = commit --amend
+
+    rb = rebase
+    rbi = rebase -i
+    rbc = rebase --continue
+    rbs = rebase --skip
+[merge]
+	tool = emerge
