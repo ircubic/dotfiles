@@ -1,0 +1,13 @@
+defutf8 on
+screen -t IRC 0
+screen -t Shell 1
+screen -t Shell 2
+screen -t Shell 3
+screen -t Shell 4
+screen -t rtorrent 5
+screen -t Python 6 ipython
+select 6
+select 0
+bind x
+hardstatus alwayslastline
+hardstatus string '%{= bw}%-Lw%{= .c}%50>%n%f* %t%{= .w}%+Lw%< %{= dG}%-=%D %d %M %Y %c:%s%{-}'
