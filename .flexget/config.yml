@@ -1,0 +1,56 @@
+presets:
+  global:
+    email:
+      smtp_host: smtp.gmail.com
+      smtp_port: 587
+      smtp_login: true
+      smtp_tls: true
+    # Get sensitive email stuff from another file
+    include: ~/.flexget/private.yml
+  tv:
+    download: ~/torrent/
+    exists_series:
+      - ~/torrentdown/
+      - ~/media/video/series/
+      - /media/Iomega HDD/media/video/series/
+    # This makes sure that I get torrents starting from the oldest.
+    sort_by:
+      field: series_id
+      reverse: no
+  # This, mixed with sort_by, will make sure I get torrents from new feeds at a
+  # slower trickle, so as to not overload my connection, and makes sure they
+  # come in a sensible order
+  limit:
+    limit_new: 3
+  bbt:
+    series:
+      - The Big Bang Theory:
+          max_quality: hdtv
+  house:
+    series:
+      - House:
+          max_quality: hdtv
+  mythb:
+    series:
+      - Mythbusters:
+          max_quality: hdtv
+
+feeds:
+  eztv-bbt:
+    preset:
+      - tv
+      - bbt
+      - limit
+    rss: http://ezrss.it/search/index.php?show_name=The+Big+Bang+Theory&show_name_exact=true&mode=rss
+  eztv-house:
+    preset:
+      - tv
+      - house
+      - limit
+    rss: http://ezrss.it/search/index.php?show_name=House&show_name_exact=true&mode=rss
+  eztv-myth:
+    preset:
+      - limit
+      - tv
+      - mythb
+    rss: http://ezrss.it/search/index.php?show_name=Mythbusters&show_name_exact=true&mode=rss
