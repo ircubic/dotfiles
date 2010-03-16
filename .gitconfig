@@ -1,6 +1,8 @@
 [user]
-	name = danieleb
-	email = danieleb@opera.com
+	email = ircubic@gmail.com
+	name = Daniel Bruce
+[core]
+	excludesfile = /home/cubic/.gitignore
 [color]
 	ui = auto
 [pack]
@@ -15,15 +17,20 @@
 	sq = merge --squash
 
 	svm = merge --no-ff --no-commit
-    svr = svn rebase
+	svr = svn rebase
 
-    iad = add --interactive
+	iad = add --interactive
 	ici = commit --interactive
-    aci = commit --amend
+	aci = commit --amend
 
-    rb = rebase
-    rbi = rebase -i
-    rbc = rebase --continue
-    rbs = rebase --skip
+	rb = rebase
+	rbi = rebase -i
+	rbc = rebase --continue
+	rbs = rebase --skip
 [merge]
 	tool = emerge
+[branch]
+	autosetuprebase = remote
+	autosetupmerge = true
+[help]
+	autocorrect = 1
