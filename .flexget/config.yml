@@ -9,14 +9,15 @@ presets:
     include: ~/.flexget/private.yml
   tv:
     download: ~/torrent/
-    exists_series:
-      - ~/torrentdown/
-      - ~/media/video/series/
-      - /media/Iomega HDD/media/video/series/
     # This makes sure that I get torrents starting from the oldest.
     sort_by:
       field: series_id
       reverse: no
+  exists:
+    exists_series:
+      - ~/torrentdown/
+      - ~/media/video/series/
+      - /media/Iomega HDD/media/video/series/
   # This, mixed with sort_by, will make sure I get torrents from new feeds at a
   # slower trickle, so as to not overload my connection, and makes sure they
   # come in a sensible order
@@ -34,23 +35,24 @@ presets:
     series:
       - Mythbusters:
           max_quality: hdtv
+  sgu:
+    series:
+      - Stargate Universe:
+          max_quality: hdtv
 
 feeds:
-  eztv-bbt:
+  eztv-latest:
     preset:
       - tv
       - bbt
-      - limit
-    rss: http://ezrss.it/search/index.php?show_name=The+Big+Bang+Theory&show_name_exact=true&mode=rss
-  eztv-house:
-    preset:
-      - tv
-      - house
-      - limit
-    rss: http://ezrss.it/search/index.php?show_name=House&show_name_exact=true&mode=rss
-  eztv-myth:
-    preset:
-      - limit
-      - tv
       - mythb
-    rss: http://ezrss.it/search/index.php?show_name=Mythbusters&show_name_exact=true&mode=rss
+      - house
+      #- exists
+    rss: http://www.ezrss.it/feed/
+  eztv-sgu:
+    interval: 12 hours
+    preset:
+      - limit
+      - tv
+      - sgu
+    rss: http://ezrss.it/search/index.php?show_name=Stargate+Universe&show_name_exact=true&mode=rss
