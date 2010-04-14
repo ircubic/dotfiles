@@ -47,12 +47,6 @@ feeds:
       - bbt
       - mythb
       - house
+      - sgu
       #- exists
     rss: http://www.ezrss.it/feed/
-  eztv-sgu:
-    interval: 12 hours
-    preset:
-      - limit
-      - tv
-      - sgu
-    rss: http://ezrss.it/search/index.php?show_name=Stargate+Universe&show_name_exact=true&mode=rss
