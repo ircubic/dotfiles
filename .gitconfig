@@ -6,7 +6,7 @@
 [color]
 	ui = auto
 [pack]
-	threads = 0
+	threads = 2
 [alias]
 	st = status
 	ci = commit
@@ -14,23 +14,26 @@
 	brn = checkout -b
 	co = checkout
 	df = diff
+	wdiff = diff --color-words
 	sq = merge --squash
 
 	svm = merge --no-ff --no-commit
-	svr = svn rebase
+    svr = svn rebase
 
-	iad = add --interactive
+    iad = add --interactive
 	ici = commit --interactive
-	aci = commit --amend
+    aci = commit --amend
 
-	rb = rebase
-	rbi = rebase -i
-	rbc = rebase --continue
-	rbs = rebase --skip
+    rb = rebase
+    rbi = rebase -i
+    rbc = rebase --continue
+    rbs = rebase --skip
+
+    vgc = repack -f -a -d --depth=250 --window=250
+    nvgc = !ionice -n7 nice -n20 git vgc
 [merge]
 	tool = emerge
 [branch]
-	autosetuprebase = remote
-	autosetupmerge = true
+	autosetuprebase = always
 [help]
 	autocorrect = 1
