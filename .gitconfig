@@ -8,7 +8,7 @@
 [pack]
 	threads = 2
 [alias]
-	st = status
+	st = status -sb
 	ci = commit
 	br = branch
 	brn = checkout -b
@@ -18,22 +18,33 @@
 	sq = merge --squash
 
 	svm = merge --no-ff --no-commit
-    svr = svn rebase
+	svr = svn rebase
 
-    iad = add --interactive
+	iad = add --interactive
 	ici = commit --interactive
-    aci = commit --amend
+	aci = commit --amend
 
-    rb = rebase
-    rbi = rebase -i
-    rbc = rebase --continue
-    rbs = rebase --skip
+	rb = rebase
+	rbi = rebase -i
+	rbc = rebase --continue
+	rbs = rebase --skip
 
-    vgc = repack -f -a -d --depth=250 --window=250
-    nvgc = !ionice -n7 nice -n20 git vgc
+	vgc = repack -f -a -d --depth=250 --window=250
+	nvgc = !ionice -n7 nice -n20 git vgc
 [merge]
-	tool = emerge
+	tool = diffmerge
 [branch]
 	autosetuprebase = always
 [help]
 	autocorrect = 1
+[mergetool "diffmerge"]
+	cmd = diffmerge --merge --result=\"$MERGED\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"
+	trustExitCode = true
+[mergetool]
+	keepBackup = false
+[diff]
+	tool = diffmerge
+[difftool "diffmerge"]
+	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[push]
+	default = tracking
