@@ -2,12 +2,15 @@
 	email = ircubic@gmail.com
 	name = Daniel Bruce
 [core]
-	excludesfile = /home/cubic/.gitignore
+	excludesfile = ~/.gitignore
 [color]
 	ui = auto
 [pack]
-	threads = 2
+	threads = 5
 [alias]
+	pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && :
+	hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
+	viz = !gitk --all
 	st = status -sb
 	ci = commit
 	br = branch
@@ -29,10 +32,11 @@
 	rbc = rebase --continue
 	rbs = rebase --skip
 
-	vgc = repack -f -a -d --depth=250 --window=250
+	vgc = repack -f -a -d --depth=128 --window=1024
 	nvgc = !ionice -n7 nice -n20 git vgc
+	short = rev-parse --short
 [merge]
-	tool = diffmerge
+	tool = meld
 [branch]
 	autosetuprebase = always
 [help]
@@ -43,8 +47,13 @@
 [mergetool]
 	keepBackup = false
 [diff]
-	tool = diffmerge
+	tool = meld
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
+[filter "media"]
+	clean = git-media-clean %f
+	smudge = git-media-smudge %f
+[rerere]
+	enabled = true
 [push]
-	default = tracking
+	default = current
