@@ -32,7 +32,7 @@
 	rbc = rebase --continue
 	rbs = rebase --skip
 
-	vgc = repack -f -a -d --depth=128 --window=1024
+	vgc = repack -f -a -d --depth=32 --window=1000
 	nvgc = !ionice -n7 nice -n20 git vgc
 	short = rev-parse --short
 [merge]
