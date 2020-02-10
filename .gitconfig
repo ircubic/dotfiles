@@ -3,10 +3,15 @@
 	name = Daniel Bruce
 [core]
 	excludesfile = ~/.gitignore
+	autocrlf = input
 [color]
 	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
 [pack]
-	threads = 5
+	threads = 9
 [alias]
 	pr = !git fetch -fu ${2:-origin} refs/pull/$1/head:pr/$1 && :
 	hist = log --color --pretty=format:\"%C(yellow)%h%C(reset) %s%C(bold red)%d%C(reset) %C(green)%ad%C(reset) %C(blue)[%an]%C(reset)\" --relative-date --decorate
@@ -19,6 +24,8 @@
 	df = diff
 	wdiff = diff --color-words
 	sq = merge --squash
+	fpush = push --force-with-lease
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 
 	svm = merge --no-ff --no-commit
 	svr = svn rebase
@@ -32,11 +39,13 @@
 	rbc = rebase --continue
 	rbs = rebase --skip
 
-	vgc = repack -f -a -d --depth=32 --window=1000
+	vgc = repack -Ad --depth=25 --window=250
 	nvgc = !ionice -n7 nice -n20 git vgc
+	rebuild = repack -fAd --depth=50 --window=1000
 	short = rev-parse --short
 [merge]
-	tool = meld
+	tool = bc3
+	conflictstyle = diff3
 [branch]
 	autosetuprebase = always
 [help]
@@ -47,7 +56,7 @@
 [mergetool]
 	keepBackup = false
 [diff]
-	tool = meld
+	tool = bcomp
 [difftool "diffmerge"]
 	cmd = diffmerge \"$LOCAL\" \"$REMOTE\"
 [filter "media"]
@@ -57,3 +66,13 @@
 	enabled = true
 [push]
 	default = current
+[difftool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/bin/bcompare" "$LOCAL" "$REMOTE"
+[mergetool "bcomp"]
+    trustExitCode = true
+    cmd = "/usr/bin/bcompare" "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+[mergetool "bc3"]
+	trustExitCode = true
+[cola]
+	spellcheck = false
